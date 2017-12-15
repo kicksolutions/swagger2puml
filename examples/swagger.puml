@@ -1,0 +1,151 @@
+@startuml
+hide empty members
+set namespaceSeparator none
+
+skinparam class {
+	BackgroundColor PaleGreen
+	ArrowColor RoyalBlue
+	BorderColor DimGray
+}
+
+class  Order {
+		 - id <b>:Int64</b> 
+		 - petId <b>:Int64</b> 
+		 - quantity <b>:Int32</b> 
+		 - shipDate <b>:Date-time</b> 
+		 - status <b>:String</b> 
+		 - complete <b>:Boolean</b> 
+}
+
+class  Category {
+		 - id <b>:Int64</b> 
+		 - name <b>:String</b> 
+}
+
+class  User {
+		 - id <b>:Int64</b> 
+		 - username <b>:String</b> 
+		 - firstName <b>:String</b> 
+		 - lastName <b>:String</b> 
+		 - email <b>:String</b> 
+		 - password <b>:String</b> 
+		 - phone <b>:String</b> 
+		 - userStatus <b>:Int32</b> 
+}
+
+class  Tag {
+		 - id <b>:Int64</b> 
+		 - name <b>:String</b> 
+}
+
+class  Pet {
+		 - id <b>:Int64</b> 
+		 - category <b>:Category[]</b> 
+		 - name <b>:String</b> 
+		 - photoUrls <b>:String[]</b> 
+		 - tags <b>:Tag[]</b> 
+		 - status <b>:String</b> 
+}
+
+class  ApiResponse {
+		 - code <b>:Int32</b> 
+		 - type <b>:String</b> 
+		 - message <b>:String</b> 
+}
+
+
+interface PetApi {
+	 + <i>updatePet(Pet body)</i><b>:void</b> 
+}
+
+interface PetApi {
+	 + <i>addPet(Pet body)</i><b>:void</b> 
+}
+
+interface PetApi {
+	 + <i>findPetsByStatus(String[] status)</i><b>:Pet[]</b> 
+}
+
+interface PetApi {
+	 + <i>findPetsByTags(String[] tags)</i><b>:Pet[]</b> 
+}
+
+interface PetApi {
+	 + <i>getPetById(Integer petId)</i><b>:Pet</b> 
+}
+
+interface PetApi {
+	 + <i>updatePetWithForm(Integer petId,String name,String status)</i><b>:void</b> 
+}
+
+interface PetApi {
+	 + <i>deletePet(Integer petId)</i><b>:void</b> 
+}
+
+interface PetApi {
+	 + <i>uploadFile(Integer petId,String additionalMetadata,File file)</i><b>:ApiResponse</b> 
+}
+
+interface StoreApi {
+	 + <i>getInventory()</i><b>:void</b> 
+}
+
+interface StoreApi {
+	 + <i>placeOrder(Order body)</i><b>:Order</b> 
+}
+
+interface StoreApi {
+	 + <i>getOrderById(Integer orderId)</i><b>:Order</b> 
+}
+
+interface StoreApi {
+	 + <i>deleteOrder(Integer orderId)</i><b>:void</b> 
+}
+
+interface UserApi {
+	 + <i>createUser(User body)</i><b>:void</b> 
+}
+
+interface UserApi {
+	 + <i>createUsersWithArrayInput(User[] body)</i><b>:void</b> 
+}
+
+interface UserApi {
+	 + <i>createUsersWithListInput(User[] body)</i><b>:void</b> 
+}
+
+interface UserApi {
+	 + <i>loginUser(String username,String password)</i><b>:void</b> 
+}
+
+interface UserApi {
+	 + <i>logoutUser()</i><b>:void</b> 
+}
+
+interface UserApi {
+	 + <i>getUserByName(String username)</i><b>:User</b> 
+}
+
+interface UserApi {
+	 + <i>updateUser(String username,User body)</i><b>:void</b> 
+}
+
+interface UserApi {
+	 + <i>deleteUser(String username)</i><b>:void</b> 
+}
+
+
+Pet  *-- "0..*"  Category 
+Pet  *-- "0..*"  Tag 
+PetApi -->    Pet 
+PetApi -->    ApiResponse 
+StoreApi -->    Order 
+UserApi -->    User 
+
+note as N1
+  Name: <b><color:royalBlue>Swagger Petstore</color>
+  Version: <b><color:royalBlue>1.0.0</color>
+end note
+
+
+@enduml
