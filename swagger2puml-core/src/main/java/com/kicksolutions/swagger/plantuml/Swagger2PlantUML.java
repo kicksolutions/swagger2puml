@@ -81,7 +81,6 @@ public class Swagger2PlantUML
     		try{
     			LOGGER.info("Processing File --> "+ specFile);
     			pumlPath = codegen.generatePuml();    		
-    			generateUMLDiagram(pumlPath, targetLocation);
     			LOGGER.info("Sucessfully Create PUML !!!");
     		}
     		catch(Exception e){
@@ -94,22 +93,5 @@ public class Swagger2PlantUML
     	}
     	
     	LOGGER.exiting(LOGGER.getName(), "transformSwagger2Puml");
-    }
-    
-    /**
-     * 
-     * @param pumlLocation
-     * @param targetLocation
-     * @throws IOException
-     * @throws InterruptedException
-     */
-    private void generateUMLDiagram(String pumlLocation,File targetLocation) throws IOException, InterruptedException{
-    	LOGGER.entering(LOGGER.getName(), "generateUMLDiagram");
-    	
-    	net.sourceforge.plantuml.Run.main(new String[]{"-tsvg","-o",targetLocation.getAbsolutePath(),"-I",pumlLocation});
-      	
-    	LOGGER.log(Level.INFO, "Swagger2UML (Class Diagrams) were generated @" +targetLocation.getAbsolutePath());
-    	
-    	LOGGER.exiting(LOGGER.getName(), "generateUMLDiagram");
     }
 }
