@@ -18,7 +18,7 @@ import io.swagger.parser.SwaggerParser;
 public class Swagger2PlantUML 
 {
 	private static final Logger LOGGER = Logger.getLogger(Swagger2PlantUML.class.getName());
-	private static final String USAGE = new StringBuilder().append(" Usage: com.amdocs.catalogone.Swagger2PlantUML <options> \n")
+	private static final String USAGE = new StringBuilder().append(" Usage: com.kicksolutions.swagger.plantuml.Swagger2PlantUML <options> \n")
 			.append(" -i <spec file> ")
 			.append(" -o <output directory> ").toString();
 	
