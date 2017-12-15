@@ -48,7 +48,7 @@ import io.swagger.models.properties.StringProperty;
 
 /**
  * @author MSANTOSH
- *         com.amdocs.catalogone.swagger.codegen.languages.PlantUMLCodegen
+ * 
  */
 public class PlantUMLCodegen {
 

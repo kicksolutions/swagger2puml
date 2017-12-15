@@ -1,7 +1,6 @@
 package com.kicksolutions.swagger.plantuml;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,7 +13,7 @@ import io.swagger.parser.SwaggerParser;
 
 /**
  * MSANTOSH
- * com.amdocs.catalogone.Swagger2PlantUML
+ *
  */
 public class Swagger2PlantUML 
 {
