@@ -1,7 +1,6 @@
 # Swagger2Puml
 
 Swagger to Puml convertion tool helps to generate Class Diagrams from Swagger Definition.
-To know more about Plant UML Click [plantuml].
 
 This Project is based on Maven and plan to support Gradle to in future.
 Following are modules we currently have 
@@ -11,8 +10,8 @@ Following are modules we currently have
 
 Following are the tools which this project internally uses:
 
-- Swagger Parser [swagger-parser]
-- Plant UML [plantuml]
+- [Swagger Parser]
+- [Plant uml]
 
 
 ## swagger2puml-core: 
@@ -45,6 +44,6 @@ License
 
 Apacahe 2.0
 
-[plantuml]: <https://github.com/plantuml/plantuml>
-[swagger]: <https://swagger.io/>
-[swagger-parser]: <https://github.com/swagger-api/swagger-parser>
+[Plant uml]: <https://github.com/plantuml/plantuml>
+[Swagger]: <https://swagger.io/>
+[Swagger Parser]: <https://github.com/swagger-api/swagger-parser>
