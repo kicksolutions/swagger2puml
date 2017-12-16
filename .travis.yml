@@ -1,4 +1,3 @@
-## Java is Language
 language: java
 
 ## Get the project version
@@ -6,18 +5,11 @@ before_deploy:
     - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
     - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
 
-## Create release in GitHub    
+## Create release in GitHub
 deploy:
-    provider: releases
-    api_key:
-        secure: gsDkBDKHKiHhSGJ2LF2rIt4pXuTIQ3AsZ6ZP0srJOHCoK1CMIEtvhY+UOkPtyw1c5Ygz3isHnVmlW40fErnbojkrBJvWAAhlJWwdWtQrO6VVYeHui/fWJeNVc9kWVC8B7cAUhTSt7yX/NaMivuII8OCjr2Z1vXzSZz+B9URQndQPOZyopQZ11qeVRhHk9NObrTTMuQ1pvtyji2wdTObkg59lD/P1789Myz76jlXo6tSqU/A9Wbc6htBPjE2DtmKoQOTaYF1v0AVV5iphB7w4TT7nJvd8tPSw/9gXg1Dk+Dzdw9yaRZow2SkeNe0QykHAtoskBsGg0+kiycfOO9wQJT4E3BN8ROqwNZzUl4+HYIi+lH0DQmNoxd4WMNA2k1Dy6ZUHMf6y/06JJy6+PbkWjRkH9k/LxOtJdGtOz0zFV+zGi6BViV1tvy9HrXlqrrxmkB7hgaWdk9oh0L5Zg/qRbPBLoh2FIJAEX2w97o05v5G5qqZH2uXqVoC9nJ+2/GeXl0yPA6RBTdPVBvrSCIxTnhQ9hfqsZBrMzYDaBn/Wv8QwO4VSQC19a7VF9OCZ4+bmYUfUiJzXLVGLsxwVW1Z9C3wknu/Esxpk1jL5a6DyjnZk1hvW9QGtJ4iKFizc70OPh2xQ5oYWoktlEJs6lBi6KBvN4JTKz4TIvNGrWoVC3vk=
-    file:
-        -  /home/travis/.m2/repository/com/kicksolutions/swagger2puml-core/$project_version/swagger2puml-core-$project_version.jar
-    skip_cleanup: true
-    on:
-        repo: kicksolutions/swagger2puml
-    name: $project_version
-
-cache:
-    directories:
-        - ~/.m2/repository    
+  provider: releases
+  api_key:
+    secure: KlOxoUAg20uGywTvvikPsKe2jwnVoDd3eTlvZAKEllQLEkWR5WGkx8pxZAArIaUl8F1LJM/UQndocUBOZjS/TqXsp39Mdbg7mJHbb2opzWOuEctzC91CBU/lA6Mp6hPr1VRdv6tt0zqAO5dGIkR1uxqQo6bz9Pevzudif0moHMG2St+roPsXAjd9tjX6jpN6R2g26+brbpQ84jpwElxNWF4RgWuLzzwuFHtlEMqTRWdi35ZBki9IofFc8zccef1fl3rnzVoBQkWWSB+shkkVoe9/ipXNDUZAIgsUh7qMuUZXDgI5GBrVDd3gyva37/ZCxYuf6oFCtdQdNEpYtrqdUivszAVsYW2TryFCWmWjlcr3oHOlFwgD8Myid9cL7i3fPaWxT2EN+TMiz9mPRqr1VjJB24MGQKtg4N7h3Co4vYlEd+MPnKfpo8C4OhSoQUenG5saIYFrKZWfBSZtA7AbUKFbMAMkbwpGc+gFuZKKFb659OORxszt2JFKHQGcGUZJUVm6DbsD1sWd6EGQOv24/5LHCmbg1EphDaGqirKUk5/2YKDgnPoKRqSxVYEdPRwtxbtNT2wYEDttyhWuins4aHcTxTcyebniW+xA7x8GTcZcs3a0MYgFVZm4fBaq847up0W1WAJ+DJrUhX2Rt8V/cj3hxuGTIsmLdvUyMhG8cJY=
+  file: swagger2puml-core\target\swagger-plantuml-core-0.0.1-SNAPSHOT.jar
+  on:
+    repo: kicksolutions/swagger2puml
