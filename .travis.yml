@@ -26,4 +26,5 @@ deploy:
   skip_cleanup: true
   on:
     repo: kicksolutions/swagger2puml
+    tags: true
   name: $project_version
