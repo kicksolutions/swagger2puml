@@ -11,7 +11,17 @@ Following are modules we currently have
 Following are the tools which this project internally uses:
 
 - [Swagger Parser]
-- [Plant uml]
+- [Plant UML]
+- [Graphviz]
+
+Please [install](https://graphviz.gitlab.io/download/) Graphviz on your machines, ensure you edit PATH varible of your machine and add bin folder of graphviz.
+
+Add GRAPHVIZ_DOT to System variables which points to dot.exe in bin folder of graphviz.
+
+# How does it work
+
+- Swagger Definition --> Java Objects --> swagger.puml
+- swagger.puml --> Plant UML --> swagger.svg
 
 
 ## swagger2puml-core: 
@@ -44,6 +54,7 @@ License
 
 Apacahe 2.0
 
-[Plant uml]: <https://github.com/plantuml/plantuml>
+[Plant UML]: <https://github.com/plantuml/plantuml>
 [Swagger]: <https://swagger.io/>
 [Swagger Parser]: <https://github.com/swagger-api/swagger-parser>
+[Graphviz]: <https://graphviz.gitlab.io/>
