@@ -1,4 +1,4 @@
-[travis-web] https://travis-ci.org/kicksolutions/swagger2puml.svg?branch=master
+[![Build Status](https://travis-ci.org/kicksolutions/swagger2puml.svg?branch=master)](https://travis-ci.org/kicksolutions/swagger2puml)
 
 # Swagger2Puml
 
