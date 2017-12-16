@@ -15,7 +15,6 @@
 
 	<scm>
 		<connection>scm:git:git@github.com:kicksolutions/swagger2puml.git</connection>
-		<developerConnection>scm:git:git@github.com:kicksolutions/swagger2puml.git</developerConnection>
 		<url>https://github.com/kicksolutions/swagger2puml</url>
 	</scm>
 
@@ -51,6 +50,10 @@
 	</licenses>
 
 	<distributionManagement>
+		<site>
+			<id>api.wiki</id>
+			<url>https://github.com/kicksolutions/swagger2puml/wiki</url>
+		</site>
 		<snapshotRepository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -96,14 +99,22 @@
 	</modules>
 
 	<profiles>
+		<!-- Activate using the release property: mvn clean install -Prelease -->
 		<profile>
 			<id>release</id>
+			<activation>
+				<property>
+					<name>release</name>
+				</property>
+			</activation>
+
 			<build>
 				<plugins>
+					<!-- To release to Maven central -->
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.6.7</version>
+						<version>1.6.8</version>
 						<extensions>true</extensions>
 						<configuration>
 							<serverId>ossrh</serverId>
@@ -111,10 +122,11 @@
 							<autoReleaseAfterClose>true</autoReleaseAfterClose>
 						</configuration>
 					</plugin>
+					<!-- To generate javadoc -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>2.2.1</version>
+						<version>3.0.1</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -127,7 +139,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.9.1</version>
+						<version>2.10.4</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -137,6 +149,8 @@
 							</execution>
 						</executions>
 					</plugin>
+
+					<!-- To sign the artifacts -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
@@ -152,6 +166,7 @@
 						</executions>
 					</plugin>
 				</plugins>
+
 			</build>
 		</profile>
 	</profiles>
