@@ -9,6 +9,7 @@ script:
   - echo $TRAVIS_BUILD_DIR
   - echo $(basename /home/travis/build/kicksolutions/swagger2puml)
   - find /home/travis/build/kicksolutions/swagger2puml -type f -printf "%f\n"
+  - find /dir -type f -follow -print|xargs ls -l
 
 ## Get the project version
 before_deploy:
