@@ -2,7 +2,7 @@
 
 Swagger to Puml convertion tool helps to generate Class Diagrams from Swagger Definition.
 
-This Project is based on Maven and plan to support Gradle to in future.
+This Project is based on Maven and plan to support Gradle also in future.
 Following are modules we currently have 
 
 - swagger2puml-core
