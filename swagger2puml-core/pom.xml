@@ -8,7 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.kicksolutions</groupId>
+	<groupId>io.github.kicksolutions</groupId>
 	<artifactId>swagger-plantuml-core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	
