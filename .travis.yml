@@ -1,20 +1,21 @@
 language: java
 
-script:
-  - echo $TRAVIS_COMMIT
-  - echo $TRAVIS_TAG
-  - echo $TRAVIS_BRANCH
-  - echo $TRAVIS_BUILD_NUMBER
-  - echo $TRAVIS_REPO_SLUG
-  - echo $TRAVIS_BUILD_DIR
-  - echo $(basename /home/travis/build/kicksolutions/swagger2puml)
-  - find /home/travis/build/kicksolutions/swagger2puml -type f -printf "%f\n"
-  - find /dir -type f -follow -print|xargs ls -l
+install:
+    mvn --settings cfg/maven/CI/settings.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+
+## export GPG details
+before_install:
+    - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+    - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
 
 ## Get the project version
 before_deploy:
     - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
     - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
+
+## Build and release to maven central  
+script: 
+    mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -B -U -Prelease
 
 ## Create release in GitHub
 deploy:
@@ -27,3 +28,7 @@ deploy:
     repo: kicksolutions/swagger2puml
     tags: true
   name: $project_version
+
+notifications:
+  email:
+    - sontosh.mvs@gmail.com  
