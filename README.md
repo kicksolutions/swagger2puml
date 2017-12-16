@@ -20,8 +20,8 @@ Add GRAPHVIZ_DOT to System variables which points to dot.exe in bin folder of gr
 
 # How does it work
 
-- Swagger Definition --> Java Objects --> swagger.puml
-- swagger.puml --> Plant UML --> swagger.svg
+- Swagger2Puml internally reads the swagger definition using [Swagger Parser] which then converts the Swagger Definition to swagger.puml
+- Once the swagger.puml gets generated sucessfully it then calls [Plant UML] to generate swagger.svg
 
 
 ## swagger2puml-core: 
