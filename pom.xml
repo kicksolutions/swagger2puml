@@ -2,16 +2,59 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>5</version>
+	</parent>
+
 	<groupId>com.kicksolutions</groupId>
 	<artifactId>swagger-plantuml-reactor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	
+
 	<url>https://github.com/kicksolutions/swagger2puml</url>
-	
+
 	<organization>
 		<name>Kick Solution</name>
 	</organization>
+
+	<scm>
+		<connection>scm:git:git@github.com:kicksolutions/swagger2puml.git</connection>
+		<developerConnection>scm:git:git@github.com:kicksolutions/swagger2puml.git</developerConnection>
+		<url>https://github.com/kicksolutions/swagger2puml</url>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>msantosh1188</id>
+			<name>Santosh M V S</name>
+			<email>sontosh.mvs@gmail.com</email>
+		</developer>
+		<developer>
+			<id>manishabardiya</id>
+			<name>Manisha bardiya</name>
+			<email>manishabardiya@gmail.com</email>
+		</developer>
+		<developer>
+			<id>oranade19</id>
+			<name>Omkar Ranade</name>
+			<email>manishabardiya@gmail.com</email>
+		</developer>
+	</developers>
+
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/kicksolutions/swagger2puml/issues</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,5 +89,5 @@
 	<modules>
 		<module>swagger2puml-core</module>
 	</modules>
-	
+
 </project>
