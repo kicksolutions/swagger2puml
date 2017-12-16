@@ -3,10 +3,19 @@ language: java
 jdk:
   - oraclejdk8
 
-script: mvn --settings .travis/settings.xml clean  verify
+install:
+  - mvn --settings .travis/settings.xml install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip -B -V
 
 deploy:
-  -
+ 	- 
+    provider: script
+    script: .travis/deploy.sh
+    skip_cleanup: true
+    on:
+      repo: kicksolutions/swagger2puml
+      branch: master
+      jdk: oraclejdk8
+  - 
     provider: script
     script: .travis/deploy.sh
     skip_cleanup: true
@@ -14,7 +23,6 @@ deploy:
       repo: kicksolutions/swagger2puml
       tags: true
       jdk: oraclejdk8
-
 
 notifications:
   email:
