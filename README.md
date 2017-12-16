@@ -1,9 +1,21 @@
 # Swagger2Puml
 
 Swagger to Puml convertion tool helps to generate Class Diagrams from Swagger Definition.
-To know more about Plant UML Click [plantuml]
+To know more about Plant UML Click [plantuml].
 
-## Swagger2puml-core: 
+This Project is based on Maven and plan to support Gradle to in future.
+Following are modules we currently have 
+
+- swagger2puml-core
+- swagger2puml-maven
+
+Following are the tools which this project internally uses:
+
+- Swagger Parser [swagger-parser]
+- Plant UML [plantuml]
+
+
+## swagger2puml-core: 
 
 This utility takes Swagger Yaml as input and as response it generates swagger.puml and swagger.svg files as output.
 
@@ -23,7 +35,7 @@ com.kicksolutions.swagger.plantuml.Swagger2PlantUML [options]
 - includeCardinality {true/flase Defult true (Optional)}
 ```
 
-## Swagger2puml-maven
+## swagger2puml-maven
 
 This Maven plugin is Mojo, which internally calls swagger2puml-core to generate swagger.puml and swagger.svg for given Swagger Definition.
 Swagger Definition can be either yaml or json extensions.
