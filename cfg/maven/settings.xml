@@ -10,6 +10,7 @@
             <password>${env.SONATYPE_PASSWORD}</password>
         </server>
     </servers>
+    
     <profiles>
       <profile>
         <id>ossrh</id>
@@ -17,7 +18,7 @@
           <activeByDefault>true</activeByDefault>
         </activation>
         <properties>
-          <gpg.executable>gpg</gpg.executable>
+          <gpg.executable>${env.GPG_EXECUTABLE}</gpg.executable>
           <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
         </properties>
       </profile>
