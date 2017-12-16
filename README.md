@@ -1,3 +1,5 @@
+[travis-web] https://travis-ci.org/kicksolutions/swagger2puml.svg?branch=master
+
 # Swagger2Puml
 
 Swagger to Puml convertion tool helps to generate Class Diagrams from Swagger Definition.
