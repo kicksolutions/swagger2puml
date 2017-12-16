@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kicksolutions/swagger2puml.svg?branch=master)](https://travis-ci.org/kicksolutions/swagger2puml)
+
 # Swagger2Puml
 
 Swagger to Puml convertion tool helps to generate Class Diagrams from Swagger Definition.
@@ -36,7 +38,7 @@ To see the generated PUML file, please click [here](examples/swagger.puml)
 ### Usage:
 
 ```
-com.kicksolutions.swagger.plantuml.Swagger2PlantUML [options]
+java -cp swagger2puml.jar com.kicksolutions.swagger.plantuml.Swagger2PlantUML [options]
 
 -i {Path of Swagger Definition (Can be either Yaml or json)}
 -o {Target location where Puml File and Image should generated}
