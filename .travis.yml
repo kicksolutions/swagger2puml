@@ -22,7 +22,7 @@ deploy:
   overwrite: true
   api_key:
     secure: "$GITHUB_OAUTH_TOKEN"
-  file: swagger2puml-core\target\swagger-plantuml-core-$project_version.jar
+  file: $TRAVIS_BUILD_DIR/*
   skip_cleanup: true
   on:
     repo: kicksolutions/swagger2puml
