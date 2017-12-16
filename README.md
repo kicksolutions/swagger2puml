@@ -7,6 +7,12 @@ To know more about Plant UML Click [plantuml]
 
 This utility takes Swagger Yaml as input and as response it generates swagger.puml and swagger.svg files as output.
 
+Below is the Sample Class Diagram which gets generated.
+To see the generated PUML file, please click [here](examples/swagger.puml)
+
+![Swagger-Class-Diagram-Sample](examples/swagger.svg)
+
+
 ## Swagger2puml-maven
 
 This Maven plugin is Mojo, which internally calls swagger2puml-core to generate swagger.puml and swagger.svg for given Swagger Definition.
