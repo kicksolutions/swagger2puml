@@ -6,8 +6,12 @@ jdk:
 install:
   - mvn --settings .travis/settings.xml install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip -B -V
 
+before_install:
+  - if [ ! -z "$GPG_SECRET_KEYS" ]; then echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import; fi
+  - if [ ! -z "$GPG_OWNERTRUST" ]; then echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust; fi
+
 deploy:
- 	- 
+  - 
     provider: script
     script: .travis/deploy.sh
     skip_cleanup: true
@@ -23,7 +27,7 @@ deploy:
       repo: kicksolutions/swagger2puml
       tags: true
       jdk: oraclejdk8
-
+      
 notifications:
   email:
     - sontosh.mvs@gmail.com
