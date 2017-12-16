@@ -17,4 +17,7 @@ deploy:
     on:
         repo: kicksolutions/swagger2puml
     name: $project_version
-  
+
+cache:
+    directories:
+        - ~/.m2/repository    
