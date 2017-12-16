@@ -19,8 +19,6 @@ deploy:
   api_key:
     secure: KFRFdMpy8NKUC8GwvJ5SdqBjncDVe9RD+uzeAbB3XqRx8O8jpWIRdMumEsq0ZvBXKDcft2TNjAQxMHBSOtCVP2MtG2WbKsFJxcFQa0FRiIi2PHb2cfMEAhpRChVMglhyEMih5g4Y/bd8Lx/VtHzG0bBPQVjUsfbWt/bXdTxtFQF2XgLg17XANylj4nYaYc5T/cIAkDugLt1fG/A3Yf1s8m1V4xMRTEaqplrHvTqVa6pD1bL2X3Eyhdm+9XKEcGiWooq8yJF3Os6++V4YLxhNvukErnkoyOGk+y8hkAyMuyVoyPJfMfskwrEo+d2++D1tTmwm4bca/cXDzqK4J4tQ0XxyE5D524jH7BS2MvFki2o9SppyBp6CPMDgKrKfJFQVBsL1EIcjNpYwdGL7lPjyr8fEFsFjMqsqpdfvp9bj4GKPu5wk93qjfIqsavUsi176NSrKS2xZBk/KZb6DkWfOCt1BkGI+sxVStwcE49+VKPsayjM4EVlvJHITWb+8aPlXFeuQRK+IYjkX2npRhIuVAttax6SmKvHpSookNsH80YgnjPi/v2pDjUlIkhRdbLvxGHl0GyVLMASZOu+oeA1yR6cWrHtLv4vkdgK7HzPn0r74Cg/NWqG389BpAupujEmNAcknT9plvQVnh3R61CqfugZj/ydQjZFwr8NwO/oLE/g=
   skip_cleanup: true
-  file:
-  	- "README.md"
   on:
     repo: kicksolutions/swagger2puml
     tags: true
