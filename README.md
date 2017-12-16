@@ -16,7 +16,7 @@ Following are the tools which this project internally uses:
 
 Please [install](https://graphviz.gitlab.io/download/) Graphviz on your machines, ensure you edit PATH varible of your machine and add bin folder of graphviz.
 
-Add GRAPHVIZ_DOT to System variables which points to dot.exe in bin folder of graphviz.
+Create a new System Variable called GRAPHVIZ_DOT and point to dot.exe for windows and dot in case of Linux in bin folder of graphviz.
 
 # How does it work
 
