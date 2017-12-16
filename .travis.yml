@@ -1,7 +1,5 @@
 language: java
-
-install:
-    mvn --settings cfg/maven/CI/settings.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+install: true
 
 ## export GPG details
 before_install:
