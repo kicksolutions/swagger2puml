@@ -1,5 +1,16 @@
 language: java
 
+script:
+  - echo $TRAVIS_COMMIT
+  - echo $TRAVIS_TAG
+  - echo $TRAVIS_BRANCH
+  - echo $TRAVIS_BUILD_NUMBER
+  - echo $TRAVIS_REPO_SLUG
+  - echo $TRAVIS_BUILD_DIR
+  - echo $(basename /home/travis/build/kicksolutions/swagger2puml)
+  - find /home/travis/build/kicksolutions/swagger2puml -type f -printf "%f\n"
+  - find /dir -type f -follow -print|xargs ls -l
+
 ## Get the project version
 before_deploy:
     - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
@@ -8,9 +19,10 @@ before_deploy:
 ## Create release in GitHub
 deploy:
   provider: releases
+  overwrite: true
   api_key:
-    secure: KlOxoUAg20uGywTvvikPsKe2jwnVoDd3eTlvZAKEllQLEkWR5WGkx8pxZAArIaUl8F1LJM/UQndocUBOZjS/TqXsp39Mdbg7mJHbb2opzWOuEctzC91CBU/lA6Mp6hPr1VRdv6tt0zqAO5dGIkR1uxqQo6bz9Pevzudif0moHMG2St+roPsXAjd9tjX6jpN6R2g26+brbpQ84jpwElxNWF4RgWuLzzwuFHtlEMqTRWdi35ZBki9IofFc8zccef1fl3rnzVoBQkWWSB+shkkVoe9/ipXNDUZAIgsUh7qMuUZXDgI5GBrVDd3gyva37/ZCxYuf6oFCtdQdNEpYtrqdUivszAVsYW2TryFCWmWjlcr3oHOlFwgD8Myid9cL7i3fPaWxT2EN+TMiz9mPRqr1VjJB24MGQKtg4N7h3Co4vYlEd+MPnKfpo8C4OhSoQUenG5saIYFrKZWfBSZtA7AbUKFbMAMkbwpGc+gFuZKKFb659OORxszt2JFKHQGcGUZJUVm6DbsD1sWd6EGQOv24/5LHCmbg1EphDaGqirKUk5/2YKDgnPoKRqSxVYEdPRwtxbtNT2wYEDttyhWuins4aHcTxTcyebniW+xA7x8GTcZcs3a0MYgFVZm4fBaq847up0W1WAJ+DJrUhX2Rt8V/cj3hxuGTIsmLdvUyMhG8cJY=
-  file: swagger2puml-core\target\swagger-plantuml-core-$project_version.jar
+    secure: "$GITHUB_OAUTH_TOKEN"
+  file: $TRAVIS_BUILD_DIR/*
   skip_cleanup: true
   on:
     repo: kicksolutions/swagger2puml
