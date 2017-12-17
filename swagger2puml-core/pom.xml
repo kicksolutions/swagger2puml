@@ -4,12 +4,12 @@
 	<parent>
 		<groupId>io.github.kicksolutions</groupId>
 		<artifactId>swagger-plantuml-reactor</artifactId>
-		<version>0.0.1-alpha</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>io.github.kicksolutions</groupId>
 	<artifactId>swagger-plantuml-core</artifactId>
-	<version>0.0.1-alpha</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<description>Core POM to generate Plant UML from Swagger</description>
 	
 	<packaging>jar</packaging>

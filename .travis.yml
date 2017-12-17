@@ -16,7 +16,7 @@ after_success:
 
 deploy:
   provider: script
-  script:  mvn --settings cfg/maven/CI/settings.xml org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG
+  script:  mvn --settings cfg/maven/CI/settings.xml org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG -Prelease
   on:
     tags: true
 
