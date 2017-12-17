@@ -1,6 +1,6 @@
-﻿#!/usr/bin/env bash
+﻿#!/bin/bash
 
-set -e
+set -ev
 
 # only do deployment, when travis detects a new tag
 if [ ! -z "$TRAVIS_TAG" ]
