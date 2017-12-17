@@ -3,7 +3,7 @@
 
 	<groupId>io.github.kicksolutions</groupId>
 	<artifactId>swagger-plantuml-reactor</artifactId>
-	<version>0.0.1-alpha</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<url>https://github.com/kicksolutions/swagger2puml</url>
