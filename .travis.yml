@@ -13,7 +13,7 @@ before_script:
 
 ## Build SNAPSHOTS and release to maven central  
 script: 
-    mvn deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -B -U -Prelease
+    mvn deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -B -Prelease
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
@@ -25,7 +25,7 @@ deploy:
     tags: true
     branch: kicksolutions/swagger2puml
 
-after_deploy: mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -DnewVersion=$TRAVIS_TAG -B -U -Prelease
+after_deploy: mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -DnewVersion=$TRAVIS_TAG -B -Prelease
 
 notifications:
   email:
