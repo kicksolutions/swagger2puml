@@ -17,6 +17,7 @@ Following are the tools which this project internally uses:
 - [Swagger Parser]
 - [Plant UML]
 - [Graphviz]
+- [Mustache]
 
 Please [install](https://graphviz.gitlab.io/download/) Graphviz on your machines, ensure you edit PATH varible of your machine and add bin folder of graphviz.
 
@@ -62,3 +63,4 @@ Apacahe 2.0
 [Swagger]: <https://swagger.io/>
 [Swagger Parser]: <https://github.com/swagger-api/swagger-parser>
 [Graphviz]: <https://graphviz.gitlab.io/>
+[Mustache]: <https://github.com/spullara/mustache.java>
