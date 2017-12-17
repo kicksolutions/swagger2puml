@@ -7,6 +7,8 @@
 	<packaging>pom</packaging>
 
 	<url>https://github.com/kicksolutions/swagger2puml</url>
+	<name>swagger-plantuml-reactor</name>
+	<description>Reactor POM to generate Plant UML from Swagger</description>
 
 	<organization>
 		<name>Kick Solutions</name>
