@@ -1,19 +1,24 @@
 language: java
-install: true
 
 ## export GPG details
 before_install:
     - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
     - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
 
+install:
+    mvn --settings cfg/maven/CI/settings.xml clean install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+
+before_script:
+    mvn cobertura:cobertura	
+
+## Build and release to maven central  
+script: 
+    mvn deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -B -U -Prelease
+
 ## Get the project version
 before_deploy:
     - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
     - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
-
-## Build and release to maven central  
-script: 
-    mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -B -U -Prelease
 
 ## Create release in GitHub
 deploy:
@@ -29,4 +34,4 @@ deploy:
 
 notifications:
   email:
-    - sontosh.mvs@gmail.com  
+    - sontosh.mvs@gmail.com
