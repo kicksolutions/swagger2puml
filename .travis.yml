@@ -14,14 +14,19 @@ before_script:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
+before_deploy:
+	- echo Deploying Changes to Central Nexus Against $TRAVIS_TAG
+	- mvn org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG
+
 deploy:
   provider: script
-  script: 
-  	- echo Deploying Changes to Central Nexus
-  	- mvn org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG
-  	- mvn deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -B -U -Prelease
+  script: mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -DnewVersion=$TRAVIS_TAG -B -U -Prelease
   on:
     tags: true
+
+after_deploy:
+	- echo Updating Snapshots back
+	- mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true --batch-mode --update-snapshots -Prelease
 
 notifications:
   email:
