@@ -15,16 +15,6 @@ before_script:
 script: 
     mvn deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -B -U -Prelease
 
-## Create release in GitHub
-deploy:
-  provider: script
-  script: cfg/maven/CI/deploy-nexus.sh
-  overwrite: true
-  skip_cleanup: true
-  on:
-    repo: kicksolutions/swagger2puml
-    tags: true
-
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
