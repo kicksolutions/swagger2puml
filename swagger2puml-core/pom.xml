@@ -10,7 +10,6 @@
 	<groupId>io.github.kicksolutions</groupId>
 	<artifactId>swagger-plantuml-core</artifactId>
 	<version>0.0.1-alpha</version>
-	<name>swagger-plantuml-core</name>
 	<description>Core POM to generate Plant UML from Swagger</description>
 	
 	<packaging>jar</packaging>
