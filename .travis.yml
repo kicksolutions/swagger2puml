@@ -18,7 +18,7 @@ script:
 ## Create release in GitHub
 deploy:
   provider: script
-  script: cfg/maven/CI/deploy.sh
+  script: cfg/maven/CI/deploy-nexus.sh
   overwrite: true
   skip_cleanup: true
   on:
