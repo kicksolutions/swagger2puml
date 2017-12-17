@@ -20,9 +20,7 @@ deploy:
   on:
     tags: true
 
-after_deploy: mvn org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAGmvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -DnewVersion=$TRAVIS_TAG -B -U -Prelease
-
-after_script: mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true --batch-mode --update-snapshots -Prelease
+after_deploy: mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -DnewVersion=$TRAVIS_TAG -B -U -Prelease
 
 notifications:
   email:
