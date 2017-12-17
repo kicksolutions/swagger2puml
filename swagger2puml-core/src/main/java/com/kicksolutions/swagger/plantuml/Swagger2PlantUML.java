@@ -1,6 +1,7 @@
 package com.kicksolutions.swagger.plantuml;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -81,16 +82,28 @@ public class Swagger2PlantUML
     			LOGGER.info("Processing File --> "+ specFile);
     			pumlPath = codegen.generatePuml();    		
     			LOGGER.info("Sucessfully Create PUML !!!");
+    			
+    			generateUMLDiagram(pumlPath, targetLocation);
     		}
     		catch(Exception e){
     			LOGGER.log(Level.SEVERE, e.getMessage(),e);
-    			System.exit(1);
+    			throw new RuntimeException(e);
     		}
-    	}
-    	else{
+    	}else{
     		LOGGER.severe(USAGE);
     	}
     	
     	LOGGER.exiting(LOGGER.getName(), "transformSwagger2Puml");
+    }
+    
+    /**
+     * 
+     * @param pumlLocation
+     * @param targetLocation
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    private void generateUMLDiagram(String pumlLocation,File targetLocation) throws IOException, InterruptedException{
+    	net.sourceforge.plantuml.Run.main(new String[]{"-tsvg","-o",targetLocation.getAbsolutePath(),"-I",pumlLocation});
     }
 }
