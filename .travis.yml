@@ -14,15 +14,15 @@ before_script:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
-before_deploy: mvn org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG
-
 deploy:
   provider: script
-  script: mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -DnewVersion=$TRAVIS_TAG -B -U -Prelease
+  script:  mvn --settings cfg/maven/CI/settings.xml org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG
   on:
     tags: true
 
-after_deploy: mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true --batch-mode --update-snapshots -Prelease
+after_deploy: mvn org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAGmvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -DnewVersion=$TRAVIS_TAG -B -U -Prelease
+
+after_script: mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true --batch-mode --update-snapshots -Prelease
 
 notifications:
   email:
