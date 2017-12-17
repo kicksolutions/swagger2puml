@@ -11,12 +11,17 @@ install:
 before_script:
     mvn cobertura:cobertura	
 
-## Build and release to maven central  
-script: 
-    mvn deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -B -U -Prelease
-
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  provider: script
+  script: 
+  	- echo Deploying Changes to Central Nexus
+  	- mvn org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG
+  	- mvn deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -B -U -Prelease
+  on:
+    tags: true
 
 notifications:
   email:
