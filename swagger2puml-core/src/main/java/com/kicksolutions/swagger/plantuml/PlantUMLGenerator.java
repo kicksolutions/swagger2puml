@@ -5,10 +5,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.commons.lang3.StringUtils;
-
-import com.kicksolutions.swagger.plantuml.cliargs.CliArgs;
-
 import io.swagger.models.Swagger;
 import io.swagger.parser.SwaggerParser;
 
@@ -16,56 +12,20 @@ import io.swagger.parser.SwaggerParser;
  * MSANTOSH
  *
  */
-public class Swagger2PlantUML 
+public class PlantUMLGenerator 
 {
-	private static final Logger LOGGER = Logger.getLogger(Swagger2PlantUML.class.getName());
-	private static final String USAGE = new StringBuilder().append(" Usage: com.kicksolutions.swagger.plantuml.Swagger2PlantUML <options> \n")
-			.append(" -i <spec file> ")
-			.append(" -o <output directory> ").toString();
+	private static final Logger LOGGER = Logger.getLogger(PlantUMLGenerator.class.getName());
 	
-	public Swagger2PlantUML() {
+	public PlantUMLGenerator() {
 		super();
 	}
-	
-	/**
-	 * 
-	 * @param args
-	 */
-    public static void main( String[] args )
-    {
-    	Swagger2PlantUML swagger2PlantUML = new Swagger2PlantUML();
-    	swagger2PlantUML.init(args);   	
-    }
-    
-    /**
-     * 
-     * @param args
-     */
-    private void init(String args[]){
-    	LOGGER.entering(LOGGER.getName(), "init");
-    	
-    	CliArgs cliArgs = new CliArgs(args);
-    	String specFile = cliArgs.getArgumentValue("-i", "");
-    	String output = cliArgs.getArgumentValue("-o","");
-    	boolean generateDefinitionModelOnly = Boolean.parseBoolean(cliArgs.getArgumentValue("generateDefinitionModelOnly","false"));
-    	boolean includeCardinality = Boolean.parseBoolean(cliArgs.getArgumentValue("includeCardinality","true"));
-    	
-    	if(StringUtils.isNotEmpty(specFile) && StringUtils.isNotEmpty(output)){
-    		transformSwagger2Puml(specFile, output,generateDefinitionModelOnly,includeCardinality);
-    	}
-    	else{
-    		LOGGER.severe(USAGE);
-    	}
-    	
-    	LOGGER.exiting(LOGGER.getName(), "init");
-    }
-    
+	    
     /**
      * 
      * @param specFile
      * @param output
      */
-    private void transformSwagger2Puml(String specFile,String output,boolean generateDefinitionModelOnly,boolean includeCardinality){
+    public void transformSwagger2Puml(String specFile,String output,boolean generateDefinitionModelOnly,boolean includeCardinality,boolean generateSvg){
     	LOGGER.entering(LOGGER.getName(), "transformSwagger2Puml");
     	
     	File swaggerSpecFile = new File(specFile);
@@ -83,14 +43,17 @@ public class Swagger2PlantUML
     			pumlPath = codegen.generatePuml();    		
     			LOGGER.info("Sucessfully Create PUML !!!");
     			
-    			generateUMLDiagram(pumlPath, targetLocation);
+    			if(generateSvg)
+    			{
+    				generateUMLDiagram(pumlPath, targetLocation);
+    			}
     		}
     		catch(Exception e){
     			LOGGER.log(Level.SEVERE, e.getMessage(),e);
     			throw new RuntimeException(e);
     		}
     	}else{
-    		LOGGER.severe(USAGE);
+    		throw new RuntimeException("Spec File or Ouput Locations are not valid");
     	}
     	
     	LOGGER.exiting(LOGGER.getName(), "transformSwagger2Puml");
