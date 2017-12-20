@@ -41,12 +41,13 @@ To see the generated PUML file, please click [here](examples/swagger.puml)
 ### Usage:
 
 ```
-java -cp swagger2puml.jar com.kicksolutions.swagger.plantuml.Swagger2PlantUML [options]
+java -cp swagger2puml.jar com.kicksolutions.swagger.Swagger2PlantUML [options]
 
 -i {Path of Swagger Definition (Can be either Yaml or json)}
 -o {Target location where Puml File and Image should generated}
-- generateDefinitionModelOnly {true/flase Defult False (Optional)}
-- includeCardinality {true/flase Defult true (Optional)}
+-generateDefinitionModelOnly {true/flase Defult False (Optional)}
+-includeCardinality {true/flase Defult true (Optional)}
+-includeCardinality {true/flase Defult true (Optional)}
 ```
 
 ## swagger2puml-maven
