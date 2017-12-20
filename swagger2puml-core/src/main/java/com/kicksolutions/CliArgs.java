@@ -1,4 +1,4 @@
-package com.kicksolutions.swagger;
+package com.kicksolutions;
 
 import java.util.HashMap;
 
