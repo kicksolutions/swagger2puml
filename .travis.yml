@@ -1,0 +1,32 @@
+language: java
+
+## export GPG details
+before_install:
+    - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+    - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+
+install:
+    mvn --settings cfg/maven/CI/settings.xml clean install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+
+before_script:
+    mvn cobertura:cobertura	
+
+## Build SNAPSHOTS and release to maven central  
+script: 
+    mvn deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -B -Prelease
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  provider: script
+  script:  mvn --settings cfg/maven/CI/settings.xml org.codehaus.mojo:versions-maven-plugin:2.3:set -DnewVersion=$TRAVIS_TAG -Prelease
+  on:
+    tags: true
+    branch: kicksolutions/swagger2puml
+
+after_deploy: mvn clean deploy --settings cfg/maven/CI/settings.xml -DskipTests=true -DnewVersion=$TRAVIS_TAG -B -Prelease
+
+notifications:
+  email:
+    - sontosh.mvs@gmail.com
