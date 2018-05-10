@@ -733,7 +733,7 @@ public class PlantUMLCodegen {
 
 		Map<String, Property> childProperties = new HashMap<String, Property>();
 
-		if (null != composedModel.getChild()) {
+		if (null != composedModel.getChild() && null != composedModel.getChild().getProperties()) {
 			childProperties = composedModel.getChild().getProperties();
 		}
 
