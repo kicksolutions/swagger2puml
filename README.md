@@ -7,7 +7,7 @@
 Swagger to Puml convertion tool helps to generate Class Diagrams from Swagger Definition.
 
 This Project is based on Maven and plan to support Gradle also in future.
-Following are modules we currently have 
+Following are modules we currently have
 
 - swagger2puml-core
 - swagger2puml-maven
@@ -29,7 +29,7 @@ Create a new System Variable called GRAPHVIZ_DOT and point to dot.exe for window
 - Once the swagger.puml gets generated sucessfully it then calls [Plant UML] to generate swagger.svg
 
 
-## swagger2puml-core: 
+## swagger2puml-core:
 
 This utility takes Swagger Yaml as input and as response it generates swagger.puml and swagger.svg files as output.
 
@@ -38,10 +38,16 @@ To see the generated PUML file, please click [here](examples/swagger.puml)
 
 ![Swagger-Class-Diagram-Sample](examples/swagger.svg)
 
-### Usage:
+### Building
 
 ```
-java -cp swagger2puml.jar com.kicksolutions.swagger.Swagger2PlantUML [options]
+mvn package
+```
+
+### Usage
+
+```
+java -jar swagger2puml.jar [options]
 
 -i {Path of Swagger Definition (Can be either Yaml or json)}
 -o {Target location where Puml File and Image should generated}
