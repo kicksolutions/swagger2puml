@@ -58,7 +58,7 @@ Swagger Definition can be either yaml or json extensions.
 License
 ----
 
-Apacahe 2.0
+Apache 2.0
 
 [Plant UML]: <https://github.com/plantuml/plantuml>
 [Swagger]: <https://swagger.io/>
