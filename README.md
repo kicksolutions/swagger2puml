@@ -47,7 +47,6 @@ java -cp swagger2puml.jar com.kicksolutions.swagger.Swagger2PlantUML [options]
 -o {Target location where Puml File and Image should generated}
 -generateDefinitionModelOnly {true/flase Defult False (Optional)}
 -includeCardinality {true/flase Defult true (Optional)}
--includeCardinality {true/flase Defult true (Optional)}
 ```
 
 ## swagger2puml-maven
