@@ -8,7 +8,6 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<groupId>io.github.kicksolutions</groupId>
 	<artifactId>swagger-plantuml-core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Core POM to generate Plant UML from Swagger</description>
@@ -18,8 +17,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
