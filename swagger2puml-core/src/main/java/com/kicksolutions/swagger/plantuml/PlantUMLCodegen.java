@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -727,31 +729,69 @@ public class PlantUMLCodegen {
 	 * @return
 	 */
 	private List<ClassMembers> getClassMembers(ComposedModel composedModel, Map<String, Model> modelsMap) {
-		LOGGER.entering(LOGGER.getName(), "getClassMembers-ComposedModel");
+      return getClassMembers(composedModel, modelsMap, new HashSet<Model>());
+	}
+
+  /**
+   * New Overloaded getClassMembers Implementation to handle deeply nested class hierarchies
+   * @param composedModel
+   * @param modelsMap
+   * @param visited
+   * @return
+   */
+	private List<ClassMembers> getClassMembers(ComposedModel composedModel, Map<String, Model> modelsMap, Set<Model> visited) {
+	  LOGGER.entering(LOGGER.getName(), "getClassMembers-ComposedModel-DeepNest");
 
 		List<ClassMembers> classMembers = new ArrayList<ClassMembers>();
-
 		Map<String, Property> childProperties = new HashMap<String, Property>();
 
 		if (null != composedModel.getChild()) {
 			childProperties = composedModel.getChild().getProperties();
 		}
 
+		List<ClassMembers> ancestorMembers = new ArrayList<ClassMembers>();
 		List<Model> allOf = composedModel.getAllOf();
 		for (Model currentModel : allOf) {
 
 			if (currentModel instanceof RefModel) {
 				RefModel refModel = (RefModel) currentModel;
-				childProperties.putAll(modelsMap.get(refModel.getSimpleRef()).getProperties());
+				// This line throws an NPE when encountering deeply nested class hierarchies because it assumes any child
+        // classes are RefModel and not ComposedModel
+				// childProperties.putAll(modelsMap.get(refModel.getSimpleRef()).getProperties());
+
+        Model parentRefModel = modelsMap.get(refModel.getSimpleRef());
+
+        if (parentRefModel.getProperties() != null) {
+          childProperties.putAll(parentRefModel.getProperties());
+        }
 
 				classMembers = convertModelPropertiesToClassMembers(childProperties,
 						modelsMap.get(refModel.getSimpleRef()), modelsMap);
+
+        // If the parent model also has AllOf references -- meaning it's a child of some other superclass
+        // then we need to recurse to get the grandparent's properties and add them to our current classes
+        // derived property list
+        if (parentRefModel instanceof ComposedModel) {
+          ComposedModel parentRefComposedModel = (ComposedModel) parentRefModel;
+          // Use visited to mark which classes we've processed -- this is just to avoid
+          // an infinite loop in case there's a circular reference in the class hierarchy.
+          if (!visited.contains(parentRefComposedModel)) {
+            ancestorMembers = getClassMembers(parentRefComposedModel, modelsMap, visited);
+            classMembers.addAll(ancestorMembers);
+          }
+         }
+
+
 			}
 		}
 
-		LOGGER.exiting(LOGGER.getName(), "getClassMembers-ComposedModel");
+		visited.add(composedModel);
+		LOGGER.exiting(LOGGER.getName(), "getClassMembers-ComposedModel-DeepNest");
 		return classMembers;
-	}
+  }
+
+  
+  
 
 	/**
 	 * 
