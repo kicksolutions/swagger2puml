@@ -68,50 +68,23 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
-		<version.swagger-parser>1.0.33</version.swagger-parser>
-		<version.mustache>0.8.18</version.mustache>
-		<version.junit>3.8.1</version.junit>
-		<version.net.sourceforge.plantuml>7999</version.net.sourceforge.plantuml>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<version.swagger-parser>2.0.16</version.swagger-parser>
+		<version.mustache>0.9.6</version.mustache>
+		<version.junit>4.12</version.junit>
+		<version.junit.jupiter>5.5.2</version.junit.jupiter>
+		<version.junit.vintage>5.5.2</version.junit.vintage>
+		<version.net.sourceforge.plantuml>8059</version.net.sourceforge.plantuml>
+		<version.apache.commons>3.9</version.apache.commons>
 	</properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${version.junit}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>io.swagger</groupId>
-				<artifactId>swagger-parser</artifactId>
-				<version>${version.swagger-parser}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.github.spullara.mustache.java</groupId>
-				<artifactId>compiler</artifactId>
-				<version>${version.mustache}</version>
-			</dependency>
-			<dependency>
-				<groupId>net.sourceforge.plantuml</groupId>
-				<artifactId>plantuml</artifactId>
-				<version>${version.net.sourceforge.plantuml}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<modules>
-		<module>swagger2puml-core</module>
-	</modules>
-
 	<build>
-		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
 				<configuration>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
@@ -202,4 +175,7 @@
 		</profile>
 	</profiles>
 
+	<modules>
+		<module>swagger2puml-core</module>
+	</modules>
 </project>
