@@ -72,7 +72,7 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<version.swagger-parser>1.0.33</version.swagger-parser>
 		<version.mustache>0.8.18</version.mustache>
-		<version.junit>3.8.1</version.junit>
+		<version.junit>4.13.1</version.junit>
 		<version.net.sourceforge.plantuml>7999</version.net.sourceforge.plantuml>
 	</properties>
 
